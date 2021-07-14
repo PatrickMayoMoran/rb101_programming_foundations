@@ -1,0 +1,37 @@
+# Sum of two integers
+
+START
+
+SET integer1 = GET
+SET integer2 = GET
+SET result = integer1 + integer2
+PRINT result
+
+END
+
+# A method that takes an array of strings, and returns a string that is all those strings concatenated together
+
+START
+
+SET concatenated_string = ""
+READ array_of_strings
+SET iterator = 0
+WHILE iterator < array_of_strings.length
+  concatenated_string << array_of_strings[iterator]
+  iterator += 1
+PRINT concatenated_string
+
+# A method that takes an array of integers and returns a new array with every other element
+
+START
+
+SET new_array
+READ integer_array
+SET iterator = 0
+WHILE iterator < integer_array.length
+  IF iterator % 2 == 0
+    new_array.push(integer_array[iterator])
+  iterator += 1
+PRINT integer_array
+
+END
