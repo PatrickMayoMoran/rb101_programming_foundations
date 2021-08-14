@@ -11,11 +11,11 @@ def prompt(message)
 end
 
 def valid_number?(num)
-  num.to_f.class == Float || num.to_i().class == Integer 
+  num.to_f.to_s == num || num.to_i.to_s == num
 end
 
 def convert_s_to_num(num)
-  if num.to_f.class == Float
+  if num.to_f.to_s == num
     num.to_f
   else
     num.to_i
