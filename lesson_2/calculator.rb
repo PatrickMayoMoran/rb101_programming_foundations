@@ -11,8 +11,18 @@ def prompt(message)
 end
 
 def valid_number?(num)
-  num.to_i() != 0
+  num.to_f.class == Float || num.to_i().class == Integer 
 end
+
+def convert_s_to_num(num)
+  if num.to_f.class == Float
+    num.to_f
+  else
+    num.to_i
+  end
+end
+
+
 
 def operation_to_message(op)
   case op
@@ -50,6 +60,7 @@ loop do # main loop
     number1 = Kernel.gets().chomp()
 
     if valid_number?(number1)
+      number1 = convert_s_to_num(number1)
       break
     else
       prompt("Hmmm... that doesn't look right.")
@@ -62,6 +73,7 @@ loop do # main loop
     number2 = Kernel.gets().chomp()
 
     if valid_number?(number2)
+      number2 = convert_s_to_num(number2)
       break
     else
       prompt("Hmmm... that doesn't look quite right")
@@ -93,13 +105,13 @@ loop do # main loop
 
   result =  case operator
             when '1'
-              number1.to_i() + number2.to_i()
+              number1 + number2
             when '2'
-              number1.to_i() - number2.to_i()
+              number1 - number2
             when '3'
-              number1.to_i() * number2.to_i()
+              number1 * number2
             when '4'
-              number1.to_f() / number2.to_f()
+              number1 / number2
             end
 
   prompt("The result is #{result}")
