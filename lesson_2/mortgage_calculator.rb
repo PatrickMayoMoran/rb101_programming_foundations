@@ -24,7 +24,7 @@
 # --calculate monthly payments
 # --convert interest rate to percentage
 # --report results
-
+require "pry"
 
 welcome_message = <<-MSG
 Welcome to the mortgage calculator!
@@ -33,6 +33,13 @@ Then, we'll provide your monthly payment.
 Here we go!
 MSG
 
+interest_message = <<-MSG
+Please enter your interest rate.
+Please enter it as 0.##
+5% would be 0.05
+6.75% would be 0.0675
+10% would be 0.10
+MSG
 rest_length = 1
 
 def prompt(message)
@@ -69,17 +76,35 @@ loop do
   prompt("What is your loan amount?")
   amt = gets.chomp
   amt = no_commas(amt)
+
+#check for valid loan amount
+
   if valid_number?(amt)
     amt = convert_s_to_num(amt)
     break
   else
     prompt("Hmmm... that doesn't look quite right")
+  end
 end
 
 
-# check for valid loan amount
 # Ask for interest rate
+int_rate = ''
+loop do
+  prompt(interest_message)
+  pause(rest_length)
+  prompt("What is your interest rate?")
+  int_rate = gets.chomp
+
 # check for valid interest rate
+  if valid_number?(int_rate)
+    int_rate = convert_s_to_num(int_rate)
+    break
+  else
+    prompt("Hmmm... that doesn't look quite right")
+  end
+end
+
 # ask for term
 # check for valid term
 # calculate/save monthly payment
