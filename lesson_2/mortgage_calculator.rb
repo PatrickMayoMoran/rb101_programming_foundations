@@ -11,10 +11,10 @@
 # --monthly payment (formula below)
 #
 # formula:
-# -- mortgage_payment = 
-# loan_amount * (monthly_interest / 
+# -- mortgage_payment =
+# loan_amount * (monthly_interest /
 #         (1 - (1 + monthly interest)**(-term)))
-# 
+#
 # Helper functions needed:
 # --prompt
 # --pause for effect
@@ -77,7 +77,7 @@ loop do
   amt = gets.chomp
   amt = no_commas(amt)
 
-#check for valid loan amount
+  # check for valid loan amount
 
   if valid_number?(amt)
     amt = convert_s_to_num(amt)
@@ -87,7 +87,6 @@ loop do
   end
 end
 
-
 # Ask for interest rate
 int_rate = ''
 loop do
@@ -96,7 +95,7 @@ loop do
   prompt("What is your interest rate?")
   int_rate = gets.chomp
 
-# check for valid interest rate
+  # check for valid interest rate
   if valid_number?(int_rate)
     int_rate = convert_s_to_num(int_rate)
     break
