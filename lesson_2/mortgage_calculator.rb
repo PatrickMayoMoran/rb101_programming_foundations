@@ -74,6 +74,10 @@ def calculate_monthly_payment(loan, int, term)
   loan * (int / (1 - (1 + int)**(-term)))
 end
 
+def years_to_months(term)
+  term * 12
+end
+
 # Greet
 prompt(welcome_message)
 pause(rest_length)
@@ -128,7 +132,6 @@ loop do
     prompt("Hmmm... that doesn't look quite right")
   end
 end
-
 
 # calculate/save monthly payment
 # report monthly payment
