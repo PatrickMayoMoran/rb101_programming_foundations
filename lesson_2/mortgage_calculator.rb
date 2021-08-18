@@ -136,7 +136,9 @@ loop do
   prompt("Calculating...")
   term_months = years_to_months(term_years)
   int_rate_months = apr_to_monthly_interest(int_rate)
-  monthly_payment = calculate_monthly_payment(loan_amount, int_rate_months, term_months)
+  monthly_payment = calculate_monthly_payment(
+    loan_amount, int_rate_months, term_months
+  )
   pause(rest_length)
 
   # report monthly payment
@@ -147,8 +149,8 @@ loop do
   # Ask to run again
   prompt("Do you want to perform another calculation? (Y to continue)")
 
-    answer = Kernel.gets().chomp()
-    break unless answer.downcase().start_with?('y')
+  answer = Kernel.gets().chomp()
+  break unless answer.downcase().start_with?('y')
 end
 
 # Goodbye!
