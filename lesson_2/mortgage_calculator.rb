@@ -113,7 +113,23 @@ loop do
 end
 
 # ask for term
-# check for valid term
+term_years = ''
+loop do
+  prompt(term_message)
+  pause(rest_length)
+  prompt("What is your loan term in years?")
+  term_years = gets.chomp
+
+  # check for valid term
+  if valid_number?(term_years)
+    term_years = convert_s_to_num(term_years)
+    break
+  else
+    prompt("Hmmm... that doesn't look quite right")
+  end
+end
+
+
 # calculate/save monthly payment
 # report monthly payment
 # Ask to run again
