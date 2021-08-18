@@ -66,6 +66,14 @@ def convert_s_to_num(num)
   end
 end
 
+def apr_to_monthly_interest(apr)
+  apr / 12
+end
+
+def calculate_monthly_payment(loan, int, term)
+  loan * (int / (1 - (1 + int)**(-term)))
+end
+
 # Greet
 prompt(welcome_message)
 pause(rest_length)
