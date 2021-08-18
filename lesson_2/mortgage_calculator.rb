@@ -83,16 +83,16 @@ prompt(welcome_message)
 pause(rest_length)
 
 # Ask for loan amount
-amt = ''
+loan_amount = ''
 loop do
   prompt("What is your loan amount?")
-  amt = gets.chomp
-  amt = no_commas(amt)
+  loan_amount = gets.chomp
+  loan_amount = no_commas(loan_amount)
 
   # check for valid loan amount
 
-  if valid_number?(amt)
-    amt = convert_s_to_num(amt)
+  if valid_number?(loan_amount)
+    loan_amount = convert_s_to_num(loan_amount)
     break
   else
     prompt("Hmmm... that doesn't look quite right")
@@ -119,8 +119,6 @@ end
 # ask for term
 term_years = ''
 loop do
-  prompt(term_message)
-  pause(rest_length)
   prompt("What is your loan term in years?")
   term_years = gets.chomp
 
@@ -134,6 +132,15 @@ loop do
 end
 
 # calculate/save monthly payment
+term_months = years_to_months(term_years)
+int_rate_months = apr_to_monthly_interest(int_rate)
+monthly_payment = calculate_monthly_payment(loan_amount, int_rate_months, term_months)
+
 # report monthly payment
+prompt("Your monthly payment is $#{monthly_payment}.")
+pause(rest_length)
+prompt("Good luck paying off your mortgage!")
+
 # Ask to run again
+
 # Goodbye!
