@@ -1,13 +1,15 @@
 VALID_CHOICES = ['rock', 'paper', 'scissors']
 
+def win?(first, second)
+    (first == 'rock' && second == 'paper') ||
+    (first == 'paper' && second == 'rock') ||
+    (first == 'scissors' && second == 'paper')
+end
+
 def display_results(player, computer)
-  if (player == 'rock' && computer == 'paper') ||
-    (player == 'paper' && computer == 'rock') ||
-    (player == 'scissors' && computer == 'paper')
+  if win?(player, computer)
     prompt("You win!")
-  elsif (player == 'rock' && computer == 'paper') ||
-        (player == 'paper' && computer == 'scissors') ||
-        (player == 'scissors' && computer == 'paper')
+  elsif win?(computer, player)
     prompt("You lose!")
   else
     prompt("It's a tie!")
