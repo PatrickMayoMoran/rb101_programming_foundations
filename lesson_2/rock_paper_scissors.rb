@@ -86,7 +86,7 @@ loop do
     prompt("Player has won #{player_wins}, computer has won #{computer_wins}.")
 
     if game_over?(player_wins, computer_wins)
-      display_winner(player_wins, computer_wins)
+      display_winner(player_wins)
       break
     end
   end
