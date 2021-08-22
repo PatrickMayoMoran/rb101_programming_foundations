@@ -6,6 +6,13 @@ WINNING_CONDITIONS = {
   spock: ['rock', 'scissors'],
   lizard: ['paper', 'spock']
 }
+ABBREVIATIONS = {
+  r: 'rock',
+  p: 'paper',
+  sc: 'scissors',
+  sp: 'spock',
+  l: 'lizard'
+}
 
 def win?(first, second)
   WINNING_CONDITIONS[first.to_sym].include?(second)
