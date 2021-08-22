@@ -32,6 +32,18 @@ def display_results(player, computer)
   end
 end
 
+def game_over?(player_wins, computer_wins)
+  player_wins == 3 || computer_wins == 3
+end
+
+def display_winner(player_wins, computer_wins)
+  if player_wins == 3
+    prompt("You won the match! Congratulations!")
+  else
+    prompt("The computer won - better luck next time!")
+  end
+end
+
 def prompt(message)
   Kernel.puts("=> #{message}")
 end
@@ -41,38 +53,44 @@ loop do
   player_wins = 0
   computer_wins = 0
 
-# Play a single round
-loop do
-  choice = ''
+  # Play a single round
   loop do
-    display_options(ABBREVIATIONS)
-    prompt("Choose one: ")
-    choice = Kernel.gets().chomp()
+    choice = ''
+    loop do
+      display_options(ABBREVIATIONS)
+      prompt("Choose one: ")
+      choice = Kernel.gets().chomp()
 
-    if ABBREVIATIONS.keys.include?(choice.to_sym)
-      choice = ABBREVIATIONS[choice.to_sym]
-      break
+      if ABBREVIATIONS.keys.include?(choice.to_sym)
+        choice = ABBREVIATIONS[choice.to_sym]
+        break
+      else
+        prompt("That's not a valid choice.")
+      end
+    end
+
+    computer_choice = VALID_CHOICES.sample()
+
+    Kernel.puts("You chose #{choice}; computer chose #{computer_choice}.")
+
+    display_results(choice, computer_choice)
+    
+    if win?(choice, computer_choice)
+      player_wins += 1
+    elsif win?(choice, computer_choice)
+      computer_wins += 1
     else
-      prompt("That's not a valid choice.")
+    end
+    
+    if game_over?(player_wins, computer_wins)
+      display_winner(player_wins, computer_wins)
+      break
     end
   end
 
-  computer_choice = VALID_CHOICES.sample()
-
-  Kernel.puts("You chose #{choice}; computer chose #{computer_choice}.")
-
-  display_results(choice, computer_choice)
-
   prompt("Do you want to play again?")
-  answer = Kernel.gets().chomp()
-  break unless answer.downcase.start_with?('y')
-end
-
-if win?(player, computer)
-  player_wins += 1
-elsif win?(computer, player)
-  computer_wins += 1
-else
+    answer = Kernel.gets().chomp()
+    break unless answer.downcase.start_with?('y')
 end
 
 prompt("Thank you for playing!")
