@@ -1,7 +1,7 @@
 VALID_CHOICES = ['rock', 'paper', 'scissors']
 
 def win?(first, second)
-    (first == 'rock' && second == 'paper') ||
+  (first == 'rock' && second == 'paper') ||
     (first == 'paper' && second == 'rock') ||
     (first == 'scissors' && second == 'paper')
 end
