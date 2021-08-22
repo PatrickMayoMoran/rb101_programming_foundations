@@ -1,10 +1,17 @@
 VALID_CHOICES = ['rock', 'paper', 'scissors', 'spock', 'lizard']
+WINNING_CONDITIONS = {
+  rock: ['scissors', 'lizard'],
+  paper: ['rock', 'spock'],
+  scissors: ['paper', 'lizard'],
+  spock: ['rock', 'scissors'],
+  lizard: ['paper', 'spock']
+}
 
 def win?(first, second)
   (first == 'rock' && (second == 'scissors' || second == 'lizard')) ||
     (first == 'paper' && (second == 'rock' || second == 'spock')) ||
     (first == 'scissors' && (second == 'paper' || second == 'lizard')) ||
-    (first == 'spock' && (second == 'paper' || second == 'rock')) ||
+    (first == 'spock' && (second == 'scissors' || second == 'rock')) ||
     (first == 'lizard' && (second == 'paper' || second == 'spock'))
 end
 
