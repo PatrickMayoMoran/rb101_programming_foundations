@@ -1,9 +1,11 @@
-VALID_CHOICES = ['rock', 'paper', 'scissors']
+VALID_CHOICES = ['rock', 'paper', 'scissors', 'spock', 'lizard']
 
 def win?(first, second)
-  (first == 'rock' && second == 'paper') ||
-    (first == 'paper' && second == 'rock') ||
-    (first == 'scissors' && second == 'paper')
+  (first == 'rock' && (second == 'scissors' || second == 'lizard')) ||
+    (first == 'paper' && (second == 'rock' || second == 'spock')) ||
+    (first == 'scissors' && (second == 'paper' || second == 'lizard')) ||
+    (first == 'spock' && (second == 'paper' || second == 'rock')) ||
+    (first == 'lizard' && (second == 'paper' || second == 'spock'))
 end
 
 def display_results(player, computer)
