@@ -56,6 +56,8 @@ loop do
   # Play a single round
   loop do
     choice = ''
+
+    # Choose your option
     loop do
       display_options(ABBREVIATIONS)
       prompt("Choose one: ")
@@ -77,11 +79,12 @@ loop do
     
     if win?(choice, computer_choice)
       player_wins += 1
-    elsif win?(choice, computer_choice)
+    elsif win?(computer_choice, choice)
       computer_wins += 1
-    else
     end
-    
+
+    prompt("Player has won #{player_wins}, computer has won #{computer_wins}.")
+
     if game_over?(player_wins, computer_wins)
       display_winner(player_wins, computer_wins)
       break
