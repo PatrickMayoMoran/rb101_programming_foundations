@@ -19,7 +19,7 @@ def win?(first, second)
 end
 
 def display_options(hash)
-  hash.each {|k, v| puts "#{k} for #{v}"}
+  hash.each { |k, v| puts "#{k} for #{v}" }
 end
 
 def display_results(player, computer)
@@ -36,7 +36,7 @@ def game_over?(player_wins, computer_wins)
   player_wins == 3 || computer_wins == 3
 end
 
-def display_winner(player_wins, computer_wins)
+def display_winner(player_wins)
   if player_wins == 3
     prompt("You won the match! Congratulations!")
   else
@@ -76,7 +76,7 @@ loop do
     Kernel.puts("You chose #{choice}; computer chose #{computer_choice}.")
 
     display_results(choice, computer_choice)
-    
+
     if win?(choice, computer_choice)
       player_wins += 1
     elsif win?(computer_choice, choice)
@@ -92,8 +92,8 @@ loop do
   end
 
   prompt("Do you want to play again?")
-    answer = Kernel.gets().chomp()
-    break unless answer.downcase.start_with?('y')
+  answer = Kernel.gets().chomp()
+  break unless answer.downcase.start_with?('y')
 end
 
 prompt("Thank you for playing!")
