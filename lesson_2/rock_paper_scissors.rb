@@ -18,6 +18,10 @@ def win?(first, second)
   WINNING_CONDITIONS[first.to_sym].include?(second)
 end
 
+def display_options(hash)
+  hash.each {|k, v| puts "#{k} for #{v}"}
+end
+
 def display_results(player, computer)
   if win?(player, computer)
     prompt("You win!")
@@ -35,10 +39,12 @@ end
 loop do
   choice = ''
   loop do
-    prompt("Choose one: #{VALID_CHOICES.join(', ')}")
+    display_options(ABBREVIATIONS)
+    prompt("Choose one: ")
     choice = Kernel.gets().chomp()
 
-    if VALID_CHOICES.include?(choice)
+    if ABBREVIATIONS.keys.include?(choice.to_sym)
+      choice = ABBREVIATIONS[choice.to_sym]
       break
     else
       prompt("That's not a valid choice.")
