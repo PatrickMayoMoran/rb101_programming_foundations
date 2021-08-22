@@ -36,6 +36,12 @@ def prompt(message)
   Kernel.puts("=> #{message}")
 end
 
+# Play a match
+loop do
+  player_wins = 0
+  computer_wins = 0
+
+# Play a single round
 loop do
   choice = ''
   loop do
@@ -60,6 +66,13 @@ loop do
   prompt("Do you want to play again?")
   answer = Kernel.gets().chomp()
   break unless answer.downcase.start_with?('y')
+end
+
+if win?(player, computer)
+  player_wins += 1
+elsif win?(computer, player)
+  computer_wins += 1
+else
 end
 
 prompt("Thank you for playing!")
