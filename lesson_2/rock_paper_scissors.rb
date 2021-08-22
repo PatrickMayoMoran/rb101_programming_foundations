@@ -8,11 +8,7 @@ WINNING_CONDITIONS = {
 }
 
 def win?(first, second)
-  (first == 'rock' && (second == 'scissors' || second == 'lizard')) ||
-    (first == 'paper' && (second == 'rock' || second == 'spock')) ||
-    (first == 'scissors' && (second == 'paper' || second == 'lizard')) ||
-    (first == 'spock' && (second == 'scissors' || second == 'rock')) ||
-    (first == 'lizard' && (second == 'paper' || second == 'spock'))
+  WINNING_CONDITIONS[first.to_sym].include?(second)
 end
 
 def display_results(player, computer)
