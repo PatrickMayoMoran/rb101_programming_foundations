@@ -27,3 +27,7 @@ advice = "Few things in life are as important as house training your pet dinosau
 # Does this have substring 'Dino'?
 advice.match?('Dino')
 advice.include?('Dino')
+
+# 5 - easier way to write this array
+flintstones = ["Fred", "Barney", "Wilma", "Betty", "BamBam", "Pebbles"]
+flintstones = %w(Fred Barney Wilma Betty BamBam Pebbles)
