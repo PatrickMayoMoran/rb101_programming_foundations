@@ -7,3 +7,11 @@ ages.assoc('Spot') != nil
 ages.has_key?('Spot')
 ages.include?('Spot')
 ages.member?('Spot')
+
+# 2 
+munsters_description = "The Munsters are creepy in a good way."
+# convert to following
+"tHE mUNSTERS ARE CREEPY IN A GOOD WAY." # munsters_description.swapcase
+"The munsters are creepy in a good way." # munsters_description.capitalize
+"the munsters are creepy in a good way." # munsters_description.downcase
+"THE MUNSTERS ARE CREEPY IN A GOOD WAY." # munsters_description.upcase
