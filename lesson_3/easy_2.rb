@@ -31,3 +31,24 @@ advice.include?('Dino')
 # 5 - easier way to write this array
 flintstones = ["Fred", "Barney", "Wilma", "Betty", "BamBam", "Pebbles"]
 flintstones = %w(Fred Barney Wilma Betty BamBam Pebbles)
+
+# 6 add Dino to family array
+flintstones << "Dino"
+
+# 7 How can we add multiple elements?
+flintstones.push("Dino", "Hoppy")
+flintstones.append("Dino", "Hoppy")
+flintstones.unshift("Dino", "Hoppy")
+
+#8 Shorten sentence
+advice = "Few things in life are as important as house training your pet dinosaur."
+advice.slice!("Few things in life are as important as ")
+advice.slice!(0..38)
+
+# 9 count number of t's
+statement = "The Flintstones Rock!"
+statement.split('').count('t') # returns 2
+
+# 10 how to center with 40 character width?
+title = "Flintstone Family Members"
+title.center(40)
