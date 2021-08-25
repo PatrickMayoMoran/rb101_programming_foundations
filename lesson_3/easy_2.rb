@@ -15,3 +15,9 @@ munsters_description = "The Munsters are creepy in a good way."
 "The munsters are creepy in a good way." # munsters_description.capitalize
 "the munsters are creepy in a good way." # munsters_description.downcase
 "THE MUNSTERS ARE CREEPY IN A GOOD WAY." # munsters_description.upcase
+
+# 3
+ages = { "Herman" => 32, "Lily" => 30, "Grandpa" => 5843, "Eddie" => 10 }
+# add the following
+additional_ages = { "Marilyn" => 22, "Spot" => 237 }
+ages.merge!(additional_ages)
