@@ -74,3 +74,53 @@ p answer - 8
 # 34 - answer is not modified, new value is returned and stored
 # in new_answer, but p call is to answer
 
+# 7 - will this mess with munsters data?
+munsters = {
+  "Herman" => { "age" => 32, "gender" => "male" },
+  "Lily" => { "age" => 30, "gender" => "female" },
+  "Grandpa" => { "age" => 402, "gender" => "male" },
+  "Eddie" => { "age" => 10, "gender" => "male" },
+  "Marilyn" => { "age" => 23, "gender" => "female"}
+}
+
+def mess_with_demographics(demo_hash)
+  demo_hash.values.each do |family_member|
+    family_member["age"] += 42
+    family_member["gender"] = "other"
+  end
+end
+
+mess_with_demographics(munsters)
+
+# Yes - method works on munster hash directly 
+# specifically, it changes the values inside the dictionaries
+# these altered dictionaries are inside munsters
+# these were altered "in place" and thus affect munsters
+
+# 8 what is the result?
+def rps(fist1, fist2)
+  if fist1 == "rock"
+    (fist2 == "paper") ? "paper" : "rock"
+  elsif fist1 == "paper"
+    (fist2 == "scissors") ? "scissors" : "paper"
+  else
+    (fist2 == "rock") ? "rock" : "scissors"
+  end
+end
+
+puts rps(rps(rps("rock", "paper"), rps("rock", "scissors")), "rock")
+
+# "paper"!!!!!
+
+#9
+def foo(param = "no")
+  "yes"
+end
+
+def bar(param = "no")
+  param == "no" ? "yes" : "no"
+end
+
+bar(foo)
+# Returns what???
+# "no" - foo always returns yes and yes does not equal no
