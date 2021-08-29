@@ -47,6 +47,7 @@ def get_substrings(string)
     end
     index += 1
   end
+  return substrings_array
 end
 
 def is_palindrome?(string)
@@ -61,6 +62,7 @@ def palindrome_substrings(string)
     palindrome_substrings << string if is_palindrome?(string)
   end
   return palindrome_substrings
+end
 
   palindrome_substrings("supercalifragilisticexpialidocious") == ["ili"]
   palindrome_substrings("abcddcbA") == ["bcddcb", "cddc", "dd"]
