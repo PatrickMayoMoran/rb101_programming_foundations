@@ -6,10 +6,11 @@ def select_fruit(dict)
   loop do
     break if counter == keys.size # in case the hash is empty
     
-    current_value = keys[counter]
+    current_key = keys[counter]
+    current_value = dicts[current_key]
 
-    if dict[current_value] == "Fruit"
-      fruits_dict[current_value] = "Fruit"
+    if current_value == "Fruit"
+      fruits_dict[current_key] = "Fruit"
     end
 
     counter += 1
