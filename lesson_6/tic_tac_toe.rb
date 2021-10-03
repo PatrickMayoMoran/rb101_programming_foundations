@@ -1,3 +1,6 @@
+WINNING_LINES = [[1, 2, 3], [4, 5, 6], [7, 8, 9]] + # rows
+                [[1, 4, 7], [2, 5, 8], [3, 6, 9]] + # columns
+                [[1, 5, 9], [3, 5, 7]]              # diagonals
 INITIAL_MARK = ' '
 PLAYER_MARK = 'X'
 COMPUTER_MARK = 'O'
@@ -7,9 +10,10 @@ def prompt(msg)
 end
 
 def empty_squares(brd)
-  brd.keys.select {|square| brd[square] == INITIAL_MARK}
+  brd.keys.select { |square| brd[square] == INITIAL_MARK }
 end
 
+# rubocop:disable Metrics/AbcSize
 def display_board(brd)
   system 'clear'
   puts "You are #{PLAYER_MARK}. Computer is #{COMPUTER_MARK}."
@@ -27,10 +31,11 @@ def display_board(brd)
   puts "     |     |"
   puts ""
 end
+# rubocop:enable Metrics/AbcSize
 
 def initialize_board
   new_board = {}
-  (1..9).each {|num| new_board[num] = INITIAL_MARK}
+  (1..9).each { |num| new_board[num] = INITIAL_MARK }
   new_board
 end
 
@@ -59,18 +64,10 @@ def winner?(board)
 end
 
 def detect_winner(board)
-  winning_lines = [[1, 2, 3], [4, 5, 6], [7, 8, 9]] + # rows
-                  [[1, 4, 7], [2, 5, 8], [3, 6, 9]] + # columns
-                  [[1, 5, 9], [3, 5, 7]]              # diagonals
-  winning_lines.each do |line|
-    if board[line[0]] == PLAYER_MARK &&
-       board[line[1]] == PLAYER_MARK &&
-       board[line[2]] == PLAYER_MARK
-       return 'Player'
-    elsif
-      board[line[0]] == COMPUTER_MARK &&
-      board[line[1]] == COMPUTER_MARK &&
-      board[line[2]] == COMPUTER_MARK
+  WINNING_LINES.each do |line|
+    if board.values_at(*line).all? { |mark| mark == PLAYER_MARK }
+      return 'Player'
+    elsif board.values_at(*line).all? { |mark| mark == COMPUTER_MARK }
       return 'Computer'
     end
   end
@@ -81,7 +78,7 @@ loop do
   board = initialize_board
 
   loop do
-    display_board(board) 
+    display_board(board)
     player_marks_spot!(board)
     break if winner?(board) || board_full?(board)
     computer_marks_spot!(board)
